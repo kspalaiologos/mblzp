@@ -1,0 +1,45 @@
+
+# mblzp
+
+An implementation of the McIlroy-Tamayo Lempel-Ziv algorithm written in Malbolge.
+
+Calgary Corpus (3,251,493 bytes) ratings:
+- `mblzp`: 1,909,033 bytes ("vanilla" McIlroy-Tamayo LZP).
+- `FSE`: 1'829'383 bytes ("vanilla" FSE entropy coding).
+- `mblzp` + `FSE`: 1'447'671 bytes (McIlroy-Tamayo LZP with FSE entropy coding).
+- `lz4 -1`: 1'690'181 bytes ("vanilla" LZSS w. minimum match of 4).
+- `lz4 -9`: 1'257'610 bytes.
+- `gzip -1`: 1'238'908 bytes (LZSS with Huffman entropy coding).
+- `gzip -9`: 1'059'335 bytes.
+
+_Remark:_ The LZP algorithm employed by this program is generally considered to be a preprocessor to a more sophisticated entropy coder. Hence some compression is left on the table. Ddespite being significantly less complicated, when paired with an entropy coder (FSE), the McIlroy-Tamayo LZP algorithm is able to perform within approx. 5% of the compression ratio of `gzip -1`.
+
+_Remark 2:_ This is not a serious data compressor. Don't do this at home.
+
+Nominally, it requires approximately 20MB of physical memory to operate. The program can be run using `fast20` as follows:
+
+```
+$ fast20 lz-c.mb < in > out
+$ fast20 lz-d.mb < out > org
+```
+
+`fast20` is best compiled as:
+
+```
+$ clang-15 fast20.c -march=native -mtune=native -flto -Ofast -static
+```
+
+However, your mileage may vary as the performance of fast20 is quite unpredictable.
+
+List of all files in the repository:
+- fast20.c - the source code to the fast20 malbolge interpreter, originally bundled with malbolge-lisp
+- fast20_x86-64 - a precompiled binary of the fast20 interpreter for x86-64
+- README - this file
+- lz-c.mb (4.71MB) - The compressor
+- lz-d.mb (4.58MB) - The decompressor
+- calgary.tar - The Calgary Corpus, a collection of files used for benchmarking compression algorithms
+- calgary-lzp.tar - The Calgary Corpus, compressed with mblzp
+
+Benchmarking on a AMD Ryzen 7 5700U CPU demonstrates the compression speed of approx. 50 bytes per second.
+
+_Remark 3:_ This compression algorithms, alongside others, is explained in great detail in my upcoming book "Data Compression in Depth". Stay tuned and follow https://palaiologos.rocks/ for updates.
