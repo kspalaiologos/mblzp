@@ -37,6 +37,8 @@ List of all files in the repository:
 - README - this file
 - lz-c.mb (4.71MB) - The compressor
 - lz-d.mb (4.58MB) - The decompressor
+- lz-c.sq.bz3 (691 bytes) - The compressor, reimplemented in SUBLEQ and compressed with bzip3. Original size 133KB. Compression ratio 0.52%, 0.04bpb.
+- lz-d.sq.bz3 (835 bytes) - The decompressor, reimplemented in SUBLEQ and compressed with bzip3. Original size 134KB. Compression ratio 0.62%, 0.05 bpb.
 - calgary.tar - The Calgary Corpus, a collection of files used for benchmarking compression algorithms
 - calgary-lzp.tar - The Calgary Corpus, compressed with mblzp
 
