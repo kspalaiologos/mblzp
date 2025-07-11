@@ -44,4 +44,4 @@ List of all files in the repository:
 
 Benchmarking on a AMD Ryzen 7 5700U CPU demonstrates the compression speed of approx. 50 bytes per second. Decompression is slower.
 
-_Remark 3:_ This compression algorithm, alongside others, is explained in great detail in my upcoming book "Data Compression in Depth". Stay tuned and follow https://palaiologos.rocks/ for updates.
+_Remark 3:_ This compression algorithm, alongside others, is explained in great detail in my upcoming book "Data Compression in Depth". Stay tuned and follow https://iczelia.net/ for updates.
